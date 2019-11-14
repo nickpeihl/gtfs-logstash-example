@@ -1,0 +1,156 @@
+{
+  "index_patterns": [
+    "gtfs-*"
+  ],
+  "settings": {
+    "number_of_shards": 1
+  },
+  "mappings": {
+    "_source": {
+      "enabled": true
+    },
+    "properties": {
+      "@timestamp": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis||epoch_second"
+      },
+      "@version": {
+        "type": "short"
+      },
+      "entity": {
+        "properties": {
+          "id": {
+            "type": "keyword"
+          }
+        }
+      },
+      "gtfs_type": {
+        "type": "keyword"
+      },
+      "header": {
+        "properties": {
+          "gtfs_realtime_version": {
+            "type": "keyword"
+          },
+          "timestamp": {
+            "type": "date",
+            "format": "epoch_millis"
+          }
+        }
+      },
+      "http_poller_metadata": {
+        "properties": {
+          "code": {
+            "type": "short"
+          },
+          "host": {
+            "type": "keyword"
+          },
+          "name": {
+            "type": "keyword"
+          },
+          "request": {
+            "properties": {
+              "method": {
+                "type": "keyword"
+              },
+              "url": {
+                "type": "text"
+              }
+            }
+          },
+          "response_headers": {
+            "properties": {
+              "connection": {
+                "type": "keyword"
+              },
+              "content-length": {
+                "type": "integer"
+              },
+              "content-type": {
+                "type": "keyword"
+              },
+              "date": {
+                "type": "text",
+                "index": false
+              },
+              "etag": {
+                "type": "text",
+                "index": false
+              },
+              "server": {
+                "type": "text",
+                "index": false
+              },
+              "response_message": {
+                "type": "keyword"
+              },
+              "runtime_seconds": {
+                "type": "half_float"
+              },
+              "times_retried": {
+                "type": "short"
+              }
+            }
+          }
+        }
+      },
+      "message": {
+        "type": "text"
+      },
+      "stop_time_update": {
+        "properties": {
+          "arrival": {
+            "properties": {
+              "time": {
+                "type": "date",
+                "format": "epoch_second"
+              }
+            }
+          },
+          "departure": {
+            "properties": {
+              "time": {
+                "type": "date",
+                "format": "epoch_second"
+              }
+            }
+          },
+          "stop_id": {
+            "type": "keyword"
+          }
+        }
+      },
+      "tags": {
+        "type": "keyword"
+      },
+      "trip": {
+        "properties": {
+          "route_id": {
+            "type": "keyword"
+          },
+          "trip_id": {
+            "type": "keyword"
+          }
+        }
+      },
+      "trip_update": {
+        "properties": {
+          "delay": {
+            "type": "integer"
+          }
+        }
+      },
+      "vehicle": {
+        "properties": {
+          "id": {
+            "type": "keyword"
+          },
+          "position": {
+            "type": "geo_point"
+          }
+        }
+      }
+    }
+  }
+}

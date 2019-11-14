@@ -1,0 +1,9 @@
+- pipeline.id: gtfs-alerts
+  path.config: "${PATHDIR}/alerts.conf"
+  pipeline.workers: 1
+- pipeline.id: "gtfs-trip-updates"
+  path.config: "${PATHDIR}/trip-updates.conf"
+  pipeline.workers: 1
+- pipeline.id: "gtfs-vehicle-positions"
+  path.config: "${PATHDIR}/vehicle-positions.conf"
+  pipeline.workers: 1
